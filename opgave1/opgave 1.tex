@@ -1,0 +1,221 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{luainputenc}
+\usepackage[danish,british]{babel}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\lstset{
+	breaklines=false,
+	basicstyle=\tiny,
+	language=bash,
+	keywordstyle=\color{blue}
+}
+
+\title{Opgave 1}
+\author{Christoffer Wadum Larsen}
+
+\begin{document}
+\maketitle
+
+\section{WGet - Download af opgaven}
+
+\begin{lstlisting}
+[chris@localhost ~]$ wget http://people.binf.ku.dk/nrapin/lpp2014/handin_1.txt
+--2014-09-08 20:34:35--  http://people.binf.ku.dk/nrapin/lpp2014/handin_1.txt
+Løser people.binf.ku.dk (people.binf.ku.dk)... 130.225.125.162
+Tilslutter people.binf.ku.dk (people.binf.ku.dk)|130.225.125.162|:80... forbundet.
+HTTP forespørgsel sendt, afventer svar... 200 OK
+Længde: 1446 (1,4K) [text/plain]
+Gemmer til: 'handin_1.txt'
+
+100%[======================================>] 1.446       --.-K/s   om 0s      
+
+2014-09-08 20:34:35 (121 MB/s) - 'handin_1.txt' gemt [1446/1446]
+\end{lstlisting}
+
+\section{Brug cat til at skrive indhold til terminalen.}
+
+\begin{lstlisting}
+[chris@localhost ~]$ cat handin_1.txt 
+Well done!
+now that you have the actual exercise, you can solve all the questions bellow.
+
+
+Let’s start by opening a terminal window.
+
+...
+
+• Remove the ko_neg_vs_wt_neg.Gsea.1361809852162 directory, the test1 and test2 directories.
+\end{lstlisting}
+
+\section{WGet - download af arkiv}
+
+\begin{lstlisting}
+[chris@localhost ~]$ wget people.binf.ku.dk/nrapin/data.tgz
+--2014-09-08 20:41:36--  http://people.binf.ku.dk/nrapin/data.tgz
+Løser people.binf.ku.dk (people.binf.ku.dk)... 130.225.125.162
+Tilslutter people.binf.ku.dk (people.binf.ku.dk)|130.225.125.162|:80... forbundet.
+HTTP forespørgsel sendt, afventer svar... 200 OK
+Længde: 15355654 (15M) [application/x-gzip]
+Gemmer til: 'data.tgz'
+
+100%[=====================================>] 15.355.654  4,07MB/s   om 3,6s   
+
+2014-09-08 20:41:40 (4,02 MB/s) - 'data.tgz' gemt [15355654/15355654]
+\end{lstlisting}
+
+\section{Udpak arkiv vha. tar}
+
+\begin{lstlisting}
+[chris@localhost ~]$ tar xvf data.tgz 
+ko_neg_vs_wt_neg.Gsea.1361809852162/
+ko_neg_vs_wt_neg.Gsea.1361809852162/edb/
+ko_neg_vs_wt_neg.Gsea.1361809852162/enplot_AGED_HSCS_DOWN_451.png
+ko_neg_vs_wt_neg.Gsea.1361809852162/enplot_AGED_HSCS_UP_874.png
+ko_neg_vs_wt_neg.Gsea.1361809852162/enplot_DORSAM_HOXA9_TARGETS_DN_961.png
+ko_neg_vs_wt_neg.Gsea.1361809852162/enplot_DORSAM_HOXA9_TARGETS_UP_892.png
+...
+ko_neg_vs_wt_neg.Gsea.1361809852162/xtools.css
+ko_neg_vs_wt_neg.Gsea.1361809852162/edb/data_gsea.txt.cls
+ko_neg_vs_wt_neg.Gsea.1361809852162/edb/gene_sets.gmt
+ko_neg_vs_wt_neg.Gsea.1361809852162/edb/modified_gsea_data.data_gsea.txt.cls_KO-G-neg_versus_WT-G-neg.rnk
+ko_neg_vs_wt_neg.Gsea.1361809852162/edb/results.edb
+\end{lstlisting}
+
+\section{Brug cd til at skifte mappe}
+
+\begin{lstlisting}
+[chris@localhost ~]$ cd ko_neg_vs_wt_neg.Gsea.1361809852162/
+\end{lstlisting}
+
+\section{Brug ls til at vise visse filer}
+
+\begin{lstlisting}
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ ls ./[WT]*
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_10D_UP_497.png
+./WANG_IMMORTALIZED_BY_HOXA9_AND_MEIS1_DN_701.png
+./WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_UP_485.png
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_10D_UP.html
+./WANG_IMMORTALIZED_BY_HOXA9_AND_MEIS1_DN.html
+./WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_UP.html
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_16D_UP_443.png
+./WANG_IMMORTALIZED_BY_HOXA9_AND_MEIS1_UP_386.png
+/WANG_TARGETS_OF_MLL_CBP_FUSION_DN_890.png
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_16D_UP.html
+./WANG_IMMORTALIZED_BY_HOXA9_AND_MEIS1_UP.html
+./WANG_TARGETS_OF_MLL_CBP_FUSION_DN.html
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_3D_UP_668.png
+./WANG_MLL_TARGETS_842.png
+./WANG_TARGETS_OF_MLL_CBP_FUSION_UP_524.png
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_3D_UP.html
+./WANG_MLL_TARGETS.html
+./WANG_TARGETS_OF_MLL_CBP_FUSION_UP.html
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_8D_UP_590.png
+./WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_DN_734.png
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_8D_UP.html
+./WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_DN.html
+\end{lstlisting}
+
+\section{Udvid forrige ls kommando til kun at vise htlm filer}
+
+\begin{lstlisting}
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ ls ./[WT]*.html
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_10D_UP.html
+./WANG_IMMORTALIZED_BY_HOXA9_AND_MEIS1_DN.html
+./WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_UP.html
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_16D_UP.html
+./WANG_IMMORTALIZED_BY_HOXA9_AND_MEIS1_UP.html
+./WANG_TARGETS_OF_MLL_CBP_FUSION_DN.html
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_3D_UP.html
+./WANG_MLL_TARGETS.html
+./WANG_TARGETS_OF_MLL_CBP_FUSION_UP.html
+./TAKEDA_TARGETS_OF_NUP98_HOXA9_FUSION_8D_UP.html
+./WANG_RESPONSE_TO_GSK3_INHIBITOR_SB216763_DN.html
+\end{lstlisting}
+
+\section{Åben html i firefox}
+
+\begin{lstlisting}
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ firefox WANG_MLL_TARGETS.html &
+[1] 2850
+\end{lstlisting}
+
+\section{Opret mapperne test1 og test2}
+
+\begin{lstlisting}
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ mkdir test1
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ mkdir test1/test2
+\end{lstlisting}
+
+\section{Flyt indhold til test1. Fejlmeddelsen er ligegyldig}
+
+\begin{lstlisting}
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ mv * test1
+mv: kan ikke flytte 'test1' til et underkatalog af sig selv, 'test1/test1'
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ ls
+test1
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ ls test1/
+edb
+enplot_XHSC_HSC_ADULT_955.png
+gset_rnd_es_dist_894.png
+enplot_AGED_HSCS_DOWN_451.png
+enplot_XHSC_HSC_FETAL_928.png
+gset_rnd_es_dist_897.png
+...
+\end{lstlisting}
+
+\section{Flyt den nyeste fil ind i test2}
+
+\begin{lstlisting}
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ mv `ls -t test1/* | head -1` test1/test2/
+\end{lstlisting}
+
+\section{Skift til test2 mappen}
+
+\begin{lstlisting}
+[chris@localhost ko_neg_vs_wt_neg.Gsea.1361809852162]$ cd test1/test2/
+\end{lstlisting}
+
+\section{Find alle filer der slutter på .png i test1 mappen}
+
+\begin{lstlisting}
+[chris@localhost test2]$ find ../ -name '*.png'
+../enplot_AGED_HSCS_UP_874.png
+../enplot_DORSAM_HOXA9_TARGETS_DN_961.png
+../enplot_DORSAM_HOXA9_TARGETS_UP_892.png
+../enplot_EWA_KO_MLL_ENL_DN_664.png
+../enplot_EWA_KO_MLL_ENL_UP_367.png
+../enplot_EWA_WT_MLL_ENL_DN_388.png
+../enplot_EWA_WT_MLL_ENL_UP_374.png
+../enplot_FERRANDO_T_ALL_WITH_MLL_ENL_FUSION_DN_895.png
+...
+../XHSC_LTHSC_SHARED_935.png
+../XHSC_STHSC_ADULT_284.png
+../XHSC_STHSC_FETAL_332.png
+../XHSC_STHSC_SHARED_329.png
+../XPARK_HSC_VS_MPP_DN_851.png
+../XPARK_HSC_VS_MPP_UP_296.png
+../enplot_AGED_HSCS_DOWN_451.png
+\end{lstlisting}
+
+\section{Skift til home mappen}
+
+\begin{lstlisting}
+[chris@localhost test2]$ cd ~
+\end{lstlisting}
+
+\section{Find alle filer der slutter på .png i home mappen}
+
+\begin{lstlisting}
+[chris@localhost ~]$ find . -print -name '*.png'
+{Mange filer}
+\end{lstlisting}
+
+\section{Fjern mapperne ko\_neg\_vs\_wt\_neg.Gsea.1361809852162, test1, test2}
+
+\begin{lstlisting}
+[chris@localhost ~]$ rm -r ko_neg_vs_wt_neg.Gsea.1361809852162
+\end{lstlisting}
+
+\end{document}
