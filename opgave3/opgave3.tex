@@ -1,0 +1,93 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{luainputenc}
+\usepackage[danish,british]{babel}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+
+\DeclareGraphicsExtensions{.png}
+
+\lstset{
+	breaklines=true,
+	basicstyle=\tiny,
+	language=bash,
+	keywordstyle=\color{blue},
+	numbers=left
+}
+
+\title{Opgave 1}
+\author{Christoffer Wadum Larsen}
+
+\begin{document}
+\maketitle
+
+\section{Part 1}
+\subsection{Download og udpak terminal.tar.gz}
+
+\begin{lstlisting}
+[chris@localhost opgave3]$ wget http://people.binf.ku.dk/wb/lpp2014/week38/terminal.tar.gz
+--2014-09-23 01:54:05--  http://people.binf.ku.dk/wb/lpp2014/week38/terminal.tar.gz
+Loser people.binf.ku.dk (people.binf.ku.dk)... 130.225.125.162
+Tilslutter people.binf.ku.dk (people.binf.ku.dk)|130.225.125.162|:80... forbundet.
+HTTP foresporgsel sendt, afventer svar... 200 OK
+Langde: 217 [application/x-gzip]
+Gemmer til: 'terminal.tar.gz'
+
+100%[======================================>] 217         --.-K/s   om 0s      
+
+2014-09-23 01:54:05 (7,87 MB/s) - 'terminal.tar.gz' gemt [217/217]
+
+[chris@localhost opgave3]$ tar -xvf terminal.tar.gz 
+terminal.sh
+\end{lstlisting}
+
+\subsection{3 Print tredje linje fra terminal.sh}
+
+\begin{lstlisting}
+[chris@localhost opgave3]$ head -3 terminal.sh | tail -1
+# This is an annoying little script
+\end{lstlisting}
+
+\subsection{Gør terminal.sh eksekverbar}
+
+\begin{lstlisting}
+[chris@localhost opgave3]$ sudo chmod 755 terminal.sh
+[chris@localhost opgave3]$ ls -l
+totalt 12
+-rw-rw-r--. 1 chris chris 1372 23 sep 02:00 opgave3.tex
+-rwxr-xr-x. 1 chris chris   93 17 sep 10:45 terminal.sh
+-rw-rw-r--. 1 chris chris  217 17 sep 10:46 terminal.tar.gz
+\end{lstlisting}
+
+\subsection{Kørsel af terminal.sh}
+
+Scriptet kan ikke køres på min opsætning. Jeg har ikke xterm, desuden ville det spawne terminaler i én uendelighed.
+
+Jeg bruger ikke den foreslåede VirtualBox, men har i stedet installeret linux direkte på min bærbare. Jeg kunne ikke få Ubuntu til at installere ordentligt, så blev foreslået at bruge Fedora i stedet. Og Fedora ser ikke ud til at have xterm installeret.
+
+For at lukke dem alle igen kan man køre \textbf{killall terminal.sh} eller \textbf{killall xterm}.
+
+\section{Part 2}
+
+Koden til part 2 kan findes i filen opgave3.py.
+
+Koden udskriver de gennemsnitlige værdier til filen results.txt samt printer column\_list[1][25] og column\_dict['column1'][25] for at man visuelt kan se at de er ens.
+
+Indeholdet af results.txt er
+
+\begin{lstlisting}
+[0.4950523680000003, 0.4989522010000002]
+\end{lstlisting}
+
+Output til terminalen er
+
+\begin{lstlisting}
+0.874545
+0.874545
+[Finished in 0.0s]
+\end{lstlisting}
+
+
+\end{document}
