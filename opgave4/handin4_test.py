@@ -2,6 +2,10 @@
 # -*- coding: utf-8 -*-
 import handin4
 
+# Konstanter
+fasta_fil = "Ecoli.prot.fasta" # Filen der indeholder Ecoli i fasta format.
+protein_regex = "[A-Z]{3}_ECOLI" # Regex til del 3 der finder alle nøgler med 3 bogstaver før _ECOLI
+
 # Tests
 def test_read_fasta():
 	u""" Tester om read_fasta returnerer en ikke tom dict.
@@ -10,7 +14,7 @@ def test_read_fasta():
 			True hvis dict ikke er tom.
 			False hvis dict er tom.
 	"""
-	return len(handin4.read_fasta("Ecoli.prot.fasta").keys()) != 0
+	return len(handin4.read_fasta(fasta_fil).keys()) != 0
 
 def test_find_prot():
 	u""" Tester om find_prot returnerer de korrekte værdier.
@@ -23,7 +27,7 @@ def test_find_prot():
 			False hvis bare en enkel test fejler.
 	"""
 	ingen_fejl = True
-	ecoli_dict = handin4.read_fasta("Ecoli.prot.fasta")
+	ecoli_dict = handin4.read_fasta(fasta_fil)
 	if handin4.find_prot(ecoli_dict, "YBGC_ECOLI") != "MNTTLFRWPVRVYYEDTDAGGVVYHASYVAFYERARTEMLRHHHFSQQALMAERVAFVVRKMTVEYYAPARLDDMLEIQTEITSMRGTSLVFTQRIVNAENTLLNEAEVLVVCVDPLKMKPRALPKSIVAEFKQ":
 		print "test_read_fasta fejl på værdi der findes."
 		ingen_fejl = False
@@ -45,8 +49,8 @@ def test_find_prot2():
 			True hvis alle værdier har den korrekte længde.
 			False hvis ikke alle værdier har den korrekte længde.
 	"""
-	ecoli_dict = handin4.read_fasta("Ecoli.prot.fasta")
-	ecoli_key_list = handin4.find_prot2(ecoli_dict, "[A-Z]{3}_ECOLI")
+	ecoli_dict = handin4.read_fasta(fasta_fil)
+	ecoli_key_list = handin4.find_prot2(ecoli_dict, protein_regex)
 	for key in ecoli_key_list:
 		if len(key) != 9:
 			return False
@@ -62,6 +66,6 @@ def testAlle():
 # Main
 if __name__ == '__main__':
 	testAlle()
-	ecoli_dict = handin4.read_fasta("Ecoli.prot.fasta")
-	ecoli_key_list = handin4.find_prot2(ecoli_dict, "[A-Z]{3}_ECOLI")
+	ecoli_dict = handin4.read_fasta(fasta_fil)
+	ecoli_key_list = handin4.find_prot2(ecoli_dict, protein_regex)
 	print "Antal proteiner med navne på 3 bogstaver før _ECOLI = %d" % len(ecoli_key_list)
