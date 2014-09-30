@@ -1,0 +1,2 @@
+Alle tests er vellykket.
+Antal proteiner med navne på 3 bogstaver før _ECOLI = 209
