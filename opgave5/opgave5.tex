@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{luainputenc}
+\usepackage[danish,british]{babel}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+
+\DeclareGraphicsExtensions{.png}
+
+\lstset{
+	breaklines=true,
+	basicstyle=\tiny,
+	language=bash,
+	keywordstyle=\color{blue},
+	numbers=left
+}
+
+\title{Opgave 1}
+\author{Christoffer Wadum Larsen}
+
+\begin{document}
+\maketitle
+
+\section{UNIX}
+
+\subsection{Download filer vha wget}
+
+\begin{lstlisting}
+[chris@localhost opgave5]$ wget http://people.binf.ku.dk/wb/lpp2014/week40/handin_solution_3.1_1.py
+--2014-10-07 00:36:56--  http://people.binf.ku.dk/wb/lpp2014/week40/handin_solution_3.1_1.py
+Loser people.binf.ku.dk (people.binf.ku.dk)... 130.225.125.162
+Tilslutter people.binf.ku.dk (people.binf.ku.dk)|130.225.125.162|:80... forbundet.
+HTTP foresporgsel sendt, afventer svar... 200 OK
+Langde: 261 [text/x-python]
+Gemmer til: 'handin_solution_3.1_1.py'
+
+100%[======================================>] 261         --.-K/s   om 0s      
+
+2014-10-07 00:36:56 (19,6 MB/s) - 'handin_solution_3.1_1.py' gemt [261/261]
+[chris@localhost opgave5]$ wget http://people.binf.ku.dk/wb/lpp2014/week40/handin_solution_3.1_2.py
+--2014-10-07 00:37:16--  http://people.binf.ku.dk/wb/lpp2014/week40/handin_solution_3.1_2.py
+Loser people.binf.ku.dk (people.binf.ku.dk)... 130.225.125.162
+Tilslutter people.binf.ku.dk (people.binf.ku.dk)|130.225.125.162|:80... forbundet.
+HTTP foresporgsel sendt, afventer svar... 200 OK
+Langde: 456 [text/x-python]
+Gemmer til: 'handin_solution_3.1_2.py'
+
+100%[======================================>] 456         --.-K/s   om 0s      
+
+2014-10-07 00:37:16 (40,9 MB/s) - 'handin_solution_3.1_2.py' gemt [456/456]
+\end{lstlisting}
+
+\subsection{Sammenligning af filerne med diff}
+
+\begin{lstlisting}
+[chris@localhost opgave5]$ diff handin_solution_3.1_1.py handin_solution_3.1_2.py 
+4a5
+>     # Read file as a list of lines and iterate over it
+6a8
+>         # Create empty field list for numeric values
+8a11
+>         # Translate string values to floats
+11a15
+>         # Add field_list_num to outer list
+\end{lstlisting}
+
+Diff lister de stykker der er forskellige. Tallene før linjen fortæller hvor i filen de findes. 4a5 betyder forskellen starter på linje 5 karakter 4. Større/mindre end tegnet indikerer hvilken fil de ekstra tegn findes i. Den skal opfattes som en pil, så for at gå fra fil 1 til fil 2, så skal der tilføres de følgende tegn til. Hvis pilen havde vendt omvendt, skulle tegnene fjernes.
+
+\subsection{Side-by-side view af diff output}
+
+\begin{lstlisting}
+[chris@localhost opgave5]$ diff --side-by-side handin_solution_3.1_1.py handin_solution_3.1_2.py 
+with open("experimentalResults.txt") as f:			with open("experimentalResults.txt") as f:
+
+    list_of_lists = []						    list_of_lists = []
+
+							      >	    # Read file as a list of lines and iterate over it
+    for line in f.readlines():					    for line in f.readlines():
+
+							      >	        # Create empty field list for numeric values
+        field_list_num = []					        field_list_num = []
+
+							      >	        # Translate string values to floats
+        for element in line.split():				        for element in line.split():
+            field_list_num.append(float(element))		            field_list_num.append(float(element))
+
+							      >	        # Add field_list_num to outer list
+        list_of_lists.append(field_list_num)			        list_of_lists.append(field_list_num)
+\end{lstlisting}
+
+\section{Python}
+
+Her er output fra python programmet. Kan også ses i txt filen output.txt.
+
+\begin{lstlisting}
+DNA sequence:  ACCCGT 
+RNA sequence:  UGACG 
+RNA sequence:  ACCCGU 
+DNA sequence:  TGACG 
+DNA sequence:  ACCCGT 
+RNA sequence:  UGACG 
+\end{lstlisting}
+
+\end{document}

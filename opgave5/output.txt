@@ -1,0 +1,6 @@
+DNA sequence:  ACCCGT 
+RNA sequence:  UGACG 
+RNA sequence:  ACCCGU 
+DNA sequence:  TGACG 
+DNA sequence:  ACCCGT 
+RNA sequence:  UGACG 
