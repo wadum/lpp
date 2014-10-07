@@ -3,8 +3,8 @@
 import re
 
 # Konstanter
-dna_regex = re . compile ( "[U]" )
-rna_regex = re . compile ( "[T]" )
+dna_regex = re . compile ( "[uU]" )
+rna_regex = re . compile ( "[tT]" )
 
 # Klasser
 class Seq :
