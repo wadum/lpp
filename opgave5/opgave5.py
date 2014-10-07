@@ -42,9 +42,11 @@ class RNA(Seq):
 	def __init__ ( self , seq ):
 		""" Initialisere en RNA sekvens. Der må ikke optræde T i sekvensen. """
 		Seq . __init__ ( self , seq , rna_regex )
+
 	def __repr__ ( self ):
 		""" Implementere repræsentationen af en DNA streng. """
 		return "RNA sequence: %s" % str ( self . data )
+
 	def translate_to_DNA ( self ):
 		""" Oversætter RNA strengen til DNA. """
 		return DNA ( self . data . replace ( "U" , "T" ) )
@@ -54,6 +56,7 @@ def RNAorDNA( seq ):
 	""" Returnerer seq enten som en DNA eller RNA """
 	if dna_regex . search ( seq ):
 		return RNA ( seq )
+	
 	if rna_regex . search ( seq ):
 		return DNA ( seq )
 
