@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 import re
 
+# Konstanter
 dna_regex = re . compile ( "[U]" )
 rna_regex = re . compile ( "[T]" )
 
+# Klasser
 class Seq :
 	""" Klasse til at gemme biologiske sekvenser. """
 	def __init__ ( self , seq , pattern ):
@@ -47,6 +49,7 @@ class RNA(Seq):
 		""" Oversætter RNA strengen til DNA. """
 		return DNA ( self . data . replace ( "U" , "T" ) )
 
+# Funktioner
 def RNAorDNA( seq ):
 	""" Returnerer seq enten som en DNA eller RNA """
 	if dna_regex . search ( seq ):
