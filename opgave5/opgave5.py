@@ -23,7 +23,7 @@ class Seq :
 		""" Returnere længden af sekvensen. """
 		return len ( self . data )
 
-class DNA(Seq):
+class DNA ( Seq ) :
 	""" Klasse til at gemme DNA sekvenser """
 	def __init__ ( self , seq ):
 		""" Initialisere en DNA sekvens. Der må ikke optræde U i sekvensen. """
@@ -37,7 +37,7 @@ class DNA(Seq):
 		""" Oversætter DNA strengen til RNA. """
 		return RNA ( self . data . replace ( "T" , "U" ) )
 
-class RNA(Seq):
+class RNA ( Seq ) :
 	""" Klasse til at gemme RNA sekvenser """
 	def __init__ ( self , seq ):
 		""" Initialisere en RNA sekvens. Der må ikke optræde T i sekvensen. """
@@ -52,16 +52,16 @@ class RNA(Seq):
 		return DNA ( self . data . replace ( "U" , "T" ) )
 
 # Funktioner
-def RNAorDNA( seq ):
+def RNAorDNA ( seq ) :
 	""" Returnerer seq enten som en DNA eller RNA """
 	if dna_regex . search ( seq ):
 		return RNA ( seq )
-	
+
 	if rna_regex . search ( seq ):
 		return DNA ( seq )
 
 
-# Print tests fra opgaven.
+# Tests fra opgaven.
 d = DNA ( ' ACCCGT ' )
 print d
 r = RNA ( ' UGACG ' )
